@@ -5,7 +5,10 @@
  */
 package com.mycompany.parcautomobile;
 
+import com.vaadin.data.Container;
 import com.vaadin.data.util.BeanItemContainer;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -18,10 +21,9 @@ public class Vehicule {
     private String marque;
     private String modele;
     private double prix;
-    private static BeanItemContainer<Vehicule> vehicules = new BeanItemContainer<>(Vehicule.class);
-
-    public Vehicule() {
-    }
+    private static BeanItemContainer<Vehicule> vehicules = new BeanItemContainer<> (Vehicule.class);
+    private static BeanItemContainer<Vehicule> prixvehicules = new BeanItemContainer<> (Vehicule.class);
+    
 
     public Vehicule(int id, String marque, String modele, double prix) {
         this.id = id;
@@ -29,12 +31,12 @@ public class Vehicule {
         this.modele = modele;
         this.prix = prix;
         this.vehicules.addBean(this);
+        this.prixvehicules.addBean(this);
     }
 
     public String getMarque() {
         return marque;
     }
-
     public String getModele() {
         return modele;
     }
@@ -62,9 +64,17 @@ public class Vehicule {
     public void setId(int id) {
         this.id = id;
     }
-
     public static BeanItemContainer<Vehicule> getVehicules() {
         return vehicules;
     }
 
+    public static BeanItemContainer<Vehicule> getVehiculesPrixBas() {
+        
+        List<Vehicule> listeVehicule=(List<Vehicule>)vehicules.getItemIds();
+        for (Vehicule unVehicule: listeVehicule){
+            if (unVehicule.getPrix() < 15000){
+            prixvehicules.addBean(unVehicule);
+        }}
+        return prixvehicules;
+    }  
 }
