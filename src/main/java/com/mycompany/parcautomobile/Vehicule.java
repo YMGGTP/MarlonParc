@@ -5,7 +5,10 @@
  */
 package com.mycompany.parcautomobile;
 
+import com.vaadin.data.Container;
 import com.vaadin.data.util.BeanItemContainer;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -13,6 +16,10 @@ import com.vaadin.data.util.BeanItemContainer;
  * @author user
  */
 public class Vehicule {
+
+    static Container.Indexed getlesVehiculesPrixBas() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     private int id;
     private String marque;
@@ -67,4 +74,22 @@ public class Vehicule {
         return vehicules;
     }
 
-}
+   
+          
+       public static BeanItemContainer<Vehicule> getVehiculesPrixBas() {
+           BeanItemContainer<Vehicule> lesVehiculesPrixBas = new BeanItemContainer<>(Vehicule.class);
+           
+           List<Vehicule> listeVehicule=(List<Vehicule>)vehicules.getItemIds() ;
+           
+           for(Vehicule unVehicule : listeVehicule) {
+           if (unVehicule.prix < 15000){
+               lesVehiculesPrixBas.addBean(unVehicule);
+           }}
+           return lesVehiculesPrixBas;
+           }
+       }
+    
+
+
+ 
+        

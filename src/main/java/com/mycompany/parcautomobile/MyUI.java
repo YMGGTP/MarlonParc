@@ -31,6 +31,7 @@ import javax.servlet.annotation.WebServlet;
 public class MyUI extends UI {
 
     private Grid contactList = new Grid();
+    private Grid contactList1 = new Grid();
     private Table contactTable = new Table();
 
     @Override
@@ -45,14 +46,20 @@ public class MyUI extends UI {
         Vehicule vehicule1 = new Vehicule(1, "Renault", "Clio", 10000);
         Vehicule vehicule2 = new Vehicule(2, "Audi", "A8", 12500);
         Vehicule vehicule3 = new Vehicule(3, "Toyota", "Yaris", 15005);
+        Vehicule vehicule4 = new Vehicule(4, "Test", "test", 18650);
+        Vehicule vehicule5 = new Vehicule(5, "Test1", "test1", 20000);
+        Vehicule vehicule6 = new Vehicule(6, "Test1", "test1", 8000);
 
         contactList.setContainerDataSource(Vehicule.getVehicules());
-
+        contactList1.setContainerDataSource(Vehicule.getVehiculesPrixBas());
         //contactTable.setContainerDataSource(new BeanItemContainer<>( Vehicule.class));
         contactList.setColumnOrder("marque", "modele", "prix");  // choisir l'ordre des colonnes
-        contactList.removeColumn("id");  // masquer la colonne
+        contactList.removeColumn("id"); 
+         contactList1.setColumnOrder("marque", "modele", "prix");  // choisir l'ordre des colonnes
+        contactList1.removeColumn("id"); // masquer la colonne
         //  contactList.setSelectionMode(Grid.SelectionMode.SINGLE);
         contactList.setSizeFull();
+        contactList1.setSizeFull();
 
     }
 
@@ -63,6 +70,8 @@ public class MyUI extends UI {
         // ajouts de composants
         layout.addComponent(new Label(" Parc de véhicule"));
         layout.addComponent(contactList);
+        layout.addComponent(new Label(" Parc de véhicule < 15 000 prix"));
+        layout.addComponent(contactList1);
         //layout.addComponent(contactTable);
         setContent(layout);  // affectation de la vue
     }
