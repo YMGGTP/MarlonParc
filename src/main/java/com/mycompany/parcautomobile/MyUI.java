@@ -33,7 +33,7 @@ public class MyUI extends UI {
     private Grid contactList = new Grid();
     private Grid contactList1 = new Grid();
     private Table contactTable = new Table();
-
+    private Grid contactList2 = new Grid();
     @Override
     protected void init(VaadinRequest vaadinrequest) {
         configureComponents();  // configuration des composants
@@ -49,17 +49,30 @@ public class MyUI extends UI {
         Vehicule vehicule4 = new Vehicule(4, "Test", "test", 18650);
         Vehicule vehicule5 = new Vehicule(5, "Test1", "test1", 20000);
         Vehicule vehicule6 = new Vehicule(6, "Test1", "test1", 8000);
+        
+        Visiteur visiteur1 = new Visiteur(1, "Marlon", "Chat", "Audi");
+        Visiteur visiteur2 = new Visiteur(2, "Guillaume", "Guigui", "Test");
+        
 
         contactList.setContainerDataSource(Vehicule.getVehicules());
         contactList1.setContainerDataSource(Vehicule.getVehiculesPrixBas());
+        contactList2.setContainerDataSource(Visiteur.getVisiteur());
+
         //contactTable.setContainerDataSource(new BeanItemContainer<>( Vehicule.class));
         contactList.setColumnOrder("marque", "modele", "prix");  // choisir l'ordre des colonnes
         contactList.removeColumn("id"); 
-         contactList1.setColumnOrder("marque", "modele", "prix");  // choisir l'ordre des colonnes
+        contactList1.setColumnOrder("marque", "modele", "prix");  // choisir l'ordre des colonnes
         contactList1.removeColumn("id"); // masquer la colonne
         //  contactList.setSelectionMode(Grid.SelectionMode.SINGLE);
+       
+        
+        contactList2.setColumnOrder("id", "prenom", "nom", "marque");  // choisir l'ordre des colonnes
+
+        
+        
         contactList.setSizeFull();
         contactList1.setSizeFull();
+        contactList2.setSizeFull();
 
     }
 
@@ -72,6 +85,9 @@ public class MyUI extends UI {
         layout.addComponent(contactList);
         layout.addComponent(new Label(" Parc de véhicule < 15 000 prix"));
         layout.addComponent(contactList1);
+        
+         layout.addComponent(new Label(" Visiteurs"));
+        layout.addComponent(contactList2);
         //layout.addComponent(contactTable);
         setContent(layout);  // affectation de la vue
     }
