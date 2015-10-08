@@ -31,7 +31,6 @@ public class Vehicule {
         this.modele = modele;
         this.prix = prix;
         this.vehicules.addBean(this);
-        this.prixvehicules.addBean(this);
     }
 
     public String getMarque() {
@@ -69,7 +68,6 @@ public class Vehicule {
     }
 
     public static BeanItemContainer<Vehicule> getVehiculesPrixBas() {
-        
         List<Vehicule> listeVehicule=(List<Vehicule>)vehicules.getItemIds();
         for (Vehicule unVehicule: listeVehicule){
             if (unVehicule.getPrix() < 15000){
