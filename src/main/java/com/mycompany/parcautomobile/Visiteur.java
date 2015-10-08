@@ -1,6 +1,7 @@
 package com.mycompany.parcautomobile;
 
 import com.vaadin.data.util.BeanItemContainer;
+import java.util.List;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -19,8 +20,7 @@ public class Visiteur {
     private String prenom;
     private static BeanItemContainer<Visiteur> visiteur = new BeanItemContainer<> (Visiteur.class);
  
-
-    public Visiteur(int id, String nom, String prenom) {
+    public Visiteur(int id, String nom, String prenom, int idVehicule) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
@@ -45,7 +45,7 @@ public class Visiteur {
     public void setPrenom(String prenom) {
         this.prenom = prenom;
     }
-
+    
     public static BeanItemContainer<Visiteur> getVisiteur() {
     return visiteur;
     }

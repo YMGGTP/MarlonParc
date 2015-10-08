@@ -33,7 +33,7 @@ public class MyUI extends UI {
     private Grid contactList = new Grid();
     private Grid contactListPrixBas = new Grid();
     private Table contactTable = new Table();
-    private Table contactVisit = new Table();
+    private Grid contactVisit = new Grid();
 
     @Override
     protected void init(VaadinRequest vaadinrequest) {
@@ -51,21 +51,18 @@ public class MyUI extends UI {
         Vehicule vehicule5 = new Vehicule(5, "YannickAuto", "BambouMobil", 14500);
         Vehicule vehicule6 = new Vehicule(6, "Voiture", "De Luxe", 55000);
         
-        Visiteur visiteur1 = new Visiteur(1, "Chatillon", "Marlon");
-        Visiteur visiteur2 = new Visiteur(2, "GuiGui", "Rocco");
+        Visiteur visiteur1 = new Visiteur(1, "Chatillon", "Marlon", 2);
+        Visiteur visiteur2 = new Visiteur(2, "GuiGui", "Rocco", 5);
         
         contactList.setContainerDataSource(Vehicule.getVehicules());
         //contactTable.setContainerDataSource(new BeanItemContainer<>( Vehicule.class));
-        contactList.setColumnOrder("marque", "modele", "prix");  // choisir l'ordre des colonnes
-        contactList.removeColumn("id");  // masquer la colonne
-        //  contactList.setSelectionMode(Grid.SelectionMode.SINGLE);
+        contactList.setColumnOrder("id", "marque", "modele", "prix");  // choisir l'ordre des colonnes
         contactList.setSizeFull();
         contactListPrixBas.setContainerDataSource(Vehicule.getVehiculesPrixBas());
         contactListPrixBas.setSizeFull();
-        
         contactVisit.setContainerDataSource(Visiteur.getVisiteur());
+        contactVisit.setColumnOrder("id", "nom", "prenom", "idVehicule");
         contactVisit.setSizeFull();
-
     }
 
     private void buildLayout() {
