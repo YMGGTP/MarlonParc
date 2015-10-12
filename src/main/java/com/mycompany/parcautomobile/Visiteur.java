@@ -20,7 +20,7 @@ public class Visiteur {
     private String prenom;
     private static BeanItemContainer<Visiteur> visiteur = new BeanItemContainer<> (Visiteur.class);
  
-    public Visiteur(int id, String nom, String prenom, int idVehicule) {
+    public Visiteur(int id, String nom, String prenom) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;

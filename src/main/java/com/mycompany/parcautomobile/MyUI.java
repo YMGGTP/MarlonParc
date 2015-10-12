@@ -51,8 +51,8 @@ public class MyUI extends UI {
         Vehicule vehicule5 = new Vehicule(5, "YannickAuto", "BambouMobil", 14500);
         Vehicule vehicule6 = new Vehicule(6, "Voiture", "De Luxe", 55000);
         
-        Visiteur visiteur1 = new Visiteur(1, "Chatillon", "Marlon", 2);
-        Visiteur visiteur2 = new Visiteur(2, "GuiGui", "Rocco", 5);
+        Visiteur visiteur1 = new Visiteur(1, "Chatillon", "Marlon");
+        Visiteur visiteur2 = new Visiteur(2, "GuiGui", "Rocco");
         
         contactList.setContainerDataSource(Vehicule.getVehicules());
         //contactTable.setContainerDataSource(new BeanItemContainer<>( Vehicule.class));
@@ -61,7 +61,7 @@ public class MyUI extends UI {
         contactListPrixBas.setContainerDataSource(Vehicule.getVehiculesPrixBas());
         contactListPrixBas.setSizeFull();
         contactVisit.setContainerDataSource(Visiteur.getVisiteur());
-        contactVisit.setColumnOrder("id", "nom", "prenom", "idVehicule");
+        contactVisit.setColumnOrder("id", "nom", "prenom");
         contactVisit.setSizeFull();
     }
 
