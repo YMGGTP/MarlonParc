@@ -43,15 +43,11 @@ public class MyUI extends UI {
     private void configureComponents() {
 
         // Chargement des données.
-        Vehicule vehicule1 = new Vehicule(1, "Renault", "Clio", 10000);
-        Vehicule vehicule2 = new Vehicule(2, "Audi", "A8", 12500);
-        Vehicule vehicule3 = new Vehicule(3, "Toyota", "Yaris", 15005);
-        Vehicule vehicule4 = new Vehicule(4, "Test", "test", 18650);
-        Vehicule vehicule5 = new Vehicule(5, "Test1", "test1", 20000);
-        Vehicule vehicule6 = new Vehicule(6, "Test1", "test1", 8000);
-        
-        Visiteur visiteur1 = new Visiteur(1, "Marlon", "Chat", "Audi");
-        Visiteur visiteur2 = new Visiteur(2, "Guillaume", "Guigui", "Test");
+    Init uniqueinstance=Init.getInit();
+    uniqueinstance.chargementinitial();
+    uniqueinstance.serealiser();
+ 
+
         
 
         contactList.setContainerDataSource(Vehicule.getVehicules());
