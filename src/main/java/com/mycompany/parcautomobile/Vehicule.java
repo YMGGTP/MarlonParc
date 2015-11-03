@@ -5,7 +5,7 @@
  */
 package com.mycompany.parcautomobile;
 
-import com.vaadin.data.Container;
+import com.vaadin.data.util.BeanItem;
 import com.vaadin.data.util.BeanItemContainer;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,9 +21,11 @@ public class Vehicule {
     private String marque;
     private String modele;
     private double prix;
-    private static BeanItemContainer<Vehicule> vehicules = new BeanItemContainer<> (Vehicule.class);
-    private static BeanItemContainer<Vehicule> prixvehicules = new BeanItemContainer<> (Vehicule.class);
+    private static BeanItemContainer<Vehicule> vehicules = new BeanItemContainer<>(Vehicule.class);
+    private static BeanItemContainer<Vehicule> vehiculesPC = new BeanItemContainer<>(Vehicule.class);
     
+    public Vehicule() {
+    }
 
     public Vehicule(int id, String marque, String modele, double prix) {
         this.id = id;
@@ -32,10 +34,12 @@ public class Vehicule {
         this.prix = prix;
         this.vehicules.addBean(this);
     }
+    
 
     public String getMarque() {
         return marque;
     }
+
     public String getModele() {
         return modele;
     }
@@ -63,17 +67,24 @@ public class Vehicule {
     public void setId(int id) {
         this.id = id;
     }
+
     public static BeanItemContainer<Vehicule> getVehicules() {
         return vehicules;
     }
-
-    public static BeanItemContainer<Vehicule> getVehiculesPrixBas() {
-        List<Vehicule> listeVehicule=(List<Vehicule>)vehicules.getItemIds();
-        for (Vehicule unVehicule: listeVehicule){
-            if (unVehicule.getPrix() < 15000){
-            prixvehicules.addBean(unVehicule);
-        }}
-        return prixvehicules;
-    }  
+    public static BeanItemContainer<Vehicule> getPb(int prix){
+        
+        List<Vehicule> lv;
+        lv = (List<Vehicule>) vehicules.getItemIds();
+        
+        for(Vehicule unV : lv){
+            if(unV.getPrix()<prix){
+                vehiculesPC.addBean(unV);       
+            }
+        }    
+        return vehiculesPC;
+    }
+    
+   
+    
 }
  

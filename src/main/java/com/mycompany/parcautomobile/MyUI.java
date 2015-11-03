@@ -25,44 +25,38 @@ import javax.servlet.annotation.WebServlet;
 
 /**
  *
+ * @author CHATILLON
  */
 @Theme("mytheme")
 @Widgetset("com.mycompany.parcautomobile.MyAppWidgetset")
 public class MyUI extends UI {
 
-    private Grid contactList = new Grid();
-    private Grid contactListPrixBas = new Grid();
-    private Table contactTable = new Table();
-    private Grid contactVisit = new Grid();
+    private static Grid contactList = new Grid();
+    private Grid vc = new Grid();
+    private Grid grillev = new Grid();
 
     @Override
     protected void init(VaadinRequest vaadinrequest) {
-        configureComponents();  // configuration des composants
-        buildLayout();          //  construction de la vue
+
+        configureComponents();
+        buildLayout();// configuration des composants
+        //  construction de la vue
     }
 
     private void configureComponents() {
+        Init.getInstance();
+        vc.setContainerDataSource(Vehicule.getPb(15000));
+        vc.setColumnOrder("marque", "modele", "prix");
+        vc.removeColumn("id");
+        vc.setSizeFull();
 
-        // Chargement des données.
-        Vehicule vehicule1 = new Vehicule(1, "Renault", "Clio", 10000);
-        Vehicule vehicule2 = new Vehicule(2, "Audi", "A8", 12500);
-        Vehicule vehicule3 = new Vehicule(3, "Toyota", "Yaris", 15005);
-        Vehicule vehicule4 = new Vehicule(4, "Mustang", "Shelby GT500", 50000);
-        Vehicule vehicule5 = new Vehicule(5, "YannickAuto", "BambouMobil", 14500);
-        Vehicule vehicule6 = new Vehicule(6, "Voiture", "De Luxe", 55000);
-        
-        Visiteur visiteur1 = new Visiteur(1, "Chatillon", "Marlon");
-        Visiteur visiteur2 = new Visiteur(2, "GuiGui", "Rocco");
-        
         contactList.setContainerDataSource(Vehicule.getVehicules());
-        //contactTable.setContainerDataSource(new BeanItemContainer<>( Vehicule.class));
-        contactList.setColumnOrder("id", "marque", "modele", "prix");  // choisir l'ordre des colonnes
+
+        //contactList.setColumnOrder("marque", "modele", "prix","visiteur");
         contactList.setSizeFull();
-        contactListPrixBas.setContainerDataSource(Vehicule.getVehiculesPrixBas());
-        contactListPrixBas.setSizeFull();
-        contactVisit.setContainerDataSource(Visiteur.getVisiteur());
-        contactVisit.setColumnOrder("id", "nom", "prenom");
-        contactVisit.setSizeFull();
+
+        grillev.setContainerDataSource(Visiteur.getPersonnes());
+        grillev.setSizeFull();
     }
 
     private void buildLayout() {
@@ -70,14 +64,16 @@ public class MyUI extends UI {
         final VerticalLayout layout = new VerticalLayout();
         layout.setMargin(true);
         // ajouts de composants
-        layout.addComponent(new Label("Parc de véhicule"));
+        layout.addComponent(new Label(" Parc de véhicule :"));
         layout.addComponent(contactList);
-        layout.addComponent(new Label("Liste visiteur"));
-        layout.addComponent(contactVisit);
-        layout.addComponent(new Label("Véhicule de moin de 15 000€"));
-        layout.addComponent(contactListPrixBas);
+
+        layout.addComponent(new Label(" Grille Visiteur :"));
+        layout.addComponent(grillev);
+
+        layout.addComponent(new Label("Voiture -15000 :"));
+        layout.addComponent(vc);
         //layout.addComponent(contactTable);
-        setContent(layout);  // affectation de la vue
+        setContent(layout);
     }
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
