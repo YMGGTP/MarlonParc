@@ -14,7 +14,13 @@ import java.util.List;
 /**
  *
  * @author user
- */
+ */ 
+
+
+
+
+
+
 public class Visiteur {
 
 
@@ -23,6 +29,10 @@ public class Visiteur {
     private String nom;
     private String marque;
     private static BeanItemContainer<Visiteur> visiteurs = new BeanItemContainer<>(Visiteur.class);
+    
+    public Visiteur(){
+        
+    }
 
 
     public Visiteur(int id, String prenom, String nom, String marque) {
@@ -73,6 +83,7 @@ public class Visiteur {
     
     return visiteurs;
     }
+    
     
     
 }
