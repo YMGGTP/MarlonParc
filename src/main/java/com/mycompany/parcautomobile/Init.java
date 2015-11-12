@@ -23,9 +23,11 @@ import java.util.Date;
  * @author CHATILLON
  */
 public class Init {
+    public XMLEncoder encoder = null;
     private static Init uniqueInit;
     
-    private Init() {}
+    private Init() { 
+        serialiser();}
     public static Init getInit() {
         if (uniqueInit == null){
             uniqueInit = new Init();
@@ -44,19 +46,18 @@ public class Init {
         
 
     
-   }
-        Visiteur visiteur1 = new Visiteur(1, "Marlon", "Chat", "Audi");
         Visiteur visiteur2 = new Visiteur(2, "Guillaume", "Guigui", "Test");
+       
+   }
+        
    
-   public void serealiser(){
-   
-   
+   public void serialiser(){
+   Visiteur visiteur1 = new Visiteur(1, "Marlon", "Chat", "Audi");
 
-        XMLEncoder encoder = null;
         
        try {
            encoder = new XMLEncoder(new BufferedOutputStream(
-           new FileOutputStream("visiteur.xml")));
+           new FileOutputStream("visiteurtest.xml")));
            encoder.writeObject(visiteur1);
            encoder.flush();
        }catch (final java.io.IOException e){
@@ -68,13 +69,13 @@ public class Init {
                
            }
        }
-    }
+   }}
 
 
 
 
 
-
+/*
    public void deserealiser(){
 
         XMLDecoder decoder=null;
@@ -95,4 +96,4 @@ public class Init {
     }
 
     
-}
+}*/

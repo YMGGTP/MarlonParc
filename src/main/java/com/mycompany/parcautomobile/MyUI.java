@@ -45,7 +45,7 @@ public class MyUI extends UI {
         // Chargement des données.
     Init uniqueinstance=Init.getInit();
     uniqueinstance.chargementinitial();
-    uniqueinstance.serealiser();
+    
  
 
         
