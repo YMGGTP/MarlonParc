@@ -43,7 +43,7 @@ public class Init {
         Vehicule vehicule4 = new Vehicule(4, "Test", "test", 18650);
         Vehicule vehicule5 = new Vehicule(5, "Test1", "test1", 20000);
         Vehicule vehicule6 = new Vehicule(6, "Test1", "test1", 8000);
-        Vehicule vehicule7 = new Vehicule(7, "Peugeot", "307", 20100);
+        Vehicule vehicule7 = new Vehicule(7, "Peugeot", "307", 10000);
         
 
     
