@@ -87,7 +87,33 @@ public class Vehicule {
            }}
            return lesVehiculesPrixBas;
            }
+       
+       public double getPrixMajore(){
+double prixMajore=0;
+if("Renault".equals(this.marque)){
+
+prixMajore = this.prix + (this.prix*5/100);
+
+
+} else if ("Peugeot".equals(this.marque)){
+
+prixMajore = this.prix + (this.prix*10/100);
+
+}
+else{
+       
+prixMajore=this.prix;
+
+}
+
+
+return prixMajore;
+}
+       
+       
        }
+
+
     
 
 
